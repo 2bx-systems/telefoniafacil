@@ -1,0 +1,90 @@
+/* Checkout B2C integrado à linguagem visual da landing page. */
+body.consumer-page .cta { display: none !important; }
+
+.consumer-checkout {
+  position: relative;
+  overflow: hidden;
+  padding: 92px 0 !important;
+  background: #052f46 !important;
+}
+
+.consumer-checkout::before {
+  content: "";
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  right: -290px;
+  top: -410px;
+  border: 1px solid rgba(31, 227, 145, .22);
+  border-radius: 50%;
+  box-shadow: 0 0 0 90px rgba(31, 227, 145, .025), 0 0 0 180px rgba(31, 227, 145, .018);
+  pointer-events: none;
+}
+
+.consumer-checkout .container::before { display: none !important; }
+
+.consumer-checkout-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(580px, 1.12fr);
+  align-items: center;
+  gap: 74px;
+  max-width: 1210px !important;
+}
+
+.consumer-checkout-copy { color: #fff; }
+.consumer-checkout-copy .section-label { color: #20e391; margin-bottom: 17px; }
+.consumer-checkout-copy h2 { margin: 0; color: #fff; text-align: left !important; font-size: clamp(48px, 4.5vw, 64px); line-height: .96; letter-spacing: -.058em; }
+.consumer-checkout-copy h2 span { color: #20e391; }
+.consumer-checkout-copy > p { max-width: 430px; margin: 25px 0 28px; color: #c5dbe3; font-size: 17px; line-height: 1.6; }
+.consumer-checkout-copy ul { display: grid; gap: 13px; margin: 0 0 30px; padding: 0; list-style: none; }
+.consumer-checkout-copy li { display: flex; align-items: center; gap: 11px; color: #f3fbfd; font-size: 14px; font-weight: 700; }
+.consumer-checkout-copy li::before { content: "✓"; display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: rgba(31, 227, 145, .14); color: #20e391; font-size: 13px; }
+.consumer-checkout-copy small { display: block; max-width: 390px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .13); color: #8fb0bd; font-size: 11px; }
+
+.consumer-checkout .form-panel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 42px 42px 40px !important;
+  border: 0 !important;
+  border-radius: 24px !important;
+  background: #fff !important;
+  box-shadow: 0 28px 65px rgba(0, 20, 33, .28) !important;
+}
+
+.consumer-checkout .form-panel::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, #20e391, #12bfc3); }
+
+.consumer-checkout-form-head { margin-bottom: 25px; }
+.consumer-checkout-form-head > span { color: #00b96d; font-size: 10px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+.consumer-checkout-form-head h3 { margin: 7px 0 6px; color: #052b43; font-size: 34px; line-height: 1.02; letter-spacing: -.045em; }
+.consumer-checkout-form-head p { margin: 0; color: #6a8190; font-size: 13px; }
+.consumer-checkout .chip-selected { display: none !important; }
+.consumer-checkout .field-grid { gap: 15px 14px !important; }
+.consumer-checkout .field label { margin-bottom: 2px !important; color: #052b43; }
+.consumer-checkout .field input { min-height: 46px; background: #fbfdfe; }
+.consumer-checkout input:-webkit-autofill { -webkit-text-fill-color: #052b43; box-shadow: 0 0 0 1000px #fbfdfe inset !important; }
+.consumer-checkout .choice-row { gap: 8px !important; }
+.consumer-checkout .choice { min-height: 42px; padding: 10px 13px !important; border-radius: 9px !important; }
+.consumer-checkout form > .btn { width: 100%; min-height: 52px !important; margin-top: 18px !important; border-radius: 10px !important; }
+.consumer-checkout .notice { margin-top: 13px !important; }
+
+@media (max-width: 960px) {
+  .consumer-checkout-layout { grid-template-columns: 1fr; gap: 42px; max-width: 720px !important; }
+  .consumer-checkout-copy { max-width: 580px; }
+  .consumer-checkout-copy h2 br { display: none; }
+}
+
+@media (max-width: 600px) {
+  .consumer-checkout { padding: 60px 0 66px !important; }
+  .consumer-checkout-layout { gap: 32px; }
+  .consumer-checkout-copy h2 { font-size: 45px; }
+  .consumer-checkout-copy > p { margin: 20px 0 23px; font-size: 15px; }
+  .consumer-checkout-copy small { display: none; }
+  .consumer-checkout .form-panel { padding: 26px 20px 28px !important; border-radius: 16px !important; }
+  .consumer-checkout-form-head h3 { font-size: 27px; }
+  .consumer-checkout .choice-row { display: grid; grid-template-columns: 1fr; }
+}

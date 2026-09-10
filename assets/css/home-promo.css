@@ -1,0 +1,14 @@
+.chip-home-promo .case-copy h2 em { color: var(--tf-green); font-style: normal; }
+.chip-home-promo .case-brand { background: linear-gradient(145deg, #064761, #052f46); }
+.chip-home-promo .case-brand p { color: #c9e0e5; }
+.chip-promo-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 10px; color: #fff; }
+.chip-promo-price strong { font-size: 28px; letter-spacing: -.04em; }
+.chip-promo-price span { color: #b8d6de; font-size: 13px; }
+.chip-home-promo .case-brand > a { display: inline-block; margin-top: 12px; color: var(--tf-green); font-size: 13px; font-weight: 800; }
+.chip-home-promo .case-brand > a span { margin-left: 8px; }
+.chip-home-promo .case-media::after { background: linear-gradient(90deg, rgba(3,40,61,.3), transparent 45%), linear-gradient(0deg, rgba(3,40,61,.3), transparent 45%); }
+
+@media (max-width: 600px) {
+  .chip-home-promo .case-copy h2 { max-width: 340px; }
+  .chip-home-promo .case-media { min-height: 290px; }
+}
