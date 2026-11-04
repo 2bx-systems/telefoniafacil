@@ -4,6 +4,7 @@
 - Orca antigo: repo `c50d714d-904e-42fb-aba2-18a5fdd3b897` permanece no checkout interno por causa da execução em estado `ready/input_accepted` e liveness não verificável. Dispatch `ctx_d12b70984abe` foi notificado para não criar trabalho adicional. Não apagar nem mover esse contexto até read-back settled.
 - GitHub Issue #1 permanece OPEN. Auditoria documental não equivale a aceite do produto; staging e owners/copy/artefato/rollback continuam bloqueadores.
 - Próxima ação: comparar o snapshot externo com o checkout interno após o coordenador fechar, revisar diff, criar branch/PR de baseline Atlas e registrar o novo caminho no Orca sem excluir o legado.
+- PR Atlas: https://github.com/2bx-systems/telefoniafacil/pull/2, branch `feat/deactivate-site-purchase-flows`, commit `34915f8`. Issue relacionada: https://github.com/2bx-systems/telefoniafacil/issues/1.
 
 # PROJECT_STATE — Site Institucional Telefonia Fácil
 
