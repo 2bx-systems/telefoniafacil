@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: purchase handoff path has a static entrypoint
+ok 1 - purchase handoff path has a static entrypoint
+  ---
+  duration_ms: 1.762636
+  type: 'test'
+  ...
+# Subtest: product detail CTAs send the selected product directly to Compras
+ok 2 - product detail CTAs send the selected product directly to Compras
+  ---
+  duration_ms: 0.484737
+  type: 'test'
+  ...
+# Subtest: Chip plan CTAs are direct Compras handoffs, not legacy chip-select buttons
+ok 3 - Chip plan CTAs are direct Compras handoffs, not legacy chip-select buttons
+  ---
+  duration_ms: 0.328805
+  type: 'test'
+  ...
+# Subtest: Chip FAQ and steps anchor on the plans section so header anchors resolve
+ok 4 - Chip FAQ and steps anchor on the plans section so header anchors resolve
+  ---
+  duration_ms: 0.239183
+  type: 'test'
+  ...
+# Subtest: Chip carousel keeps autoplay paused while the pointer stays over it
+ok 5 - Chip carousel keeps autoplay paused while the pointer stays over it
+  ---
+  duration_ms: 0.308844
+  type: 'test'
+  ...
+# Subtest: public copy does not reference the retired site or catalog
+ok 6 - public copy does not reference the retired site or catalog
+  ---
+  duration_ms: 0.359029
+  type: 'test'
+  ...
+# Subtest: sitemap does not list the noindex purchase route
+ok 7 - sitemap does not list the noindex purchase route
+  ---
+  duration_ms: 0.30511
+  type: 'test'
+  ...
+# Subtest: no active purchase link points back to the legacy contract route
+ok 8 - no active purchase link points back to the legacy contract route
+  ---
+  duration_ms: 0.30645
+  type: 'test'
+  ...
+# Subtest: legacy Chip checkout initializers stay disabled even if stale markup returns
+ok 9 - legacy Chip checkout initializers stay disabled even if stale markup returns
+  ---
+  duration_ms: 0.843136
+  type: 'test'
+  ...
+# Subtest: legacy cart and checkout handlers require the disabled purchase flag
+ok 10 - legacy cart and checkout handlers require the disabled purchase flag
+  ---
+  duration_ms: 0.771278
+  type: 'test'
+  ...
+# Subtest: campaign attribution values must be safe, bounded identifiers
+ok 11 - campaign attribution values must be safe, bounded identifiers
+  ---
+  duration_ms: 1.537162
+  type: 'test'
+  ...
+# Subtest: purchase entry points use a single handoff builder
+ok 12 - purchase entry points use a single handoff builder
+  ---
+  duration_ms: 0.19047
+  type: 'test'
+  ...
+# Subtest: all HTML entrypoints request the cache-busted site script
+ok 13 - all HTML entrypoints request the cache-busted site script
+  ---
+  duration_ms: 28.701394
+  type: 'test'
+  ...
+# Subtest: legacy checkout routes render the purchase transition page
+ok 14 - legacy checkout routes render the purchase transition page
+  ---
+  duration_ms: 0.55686
+  type: 'test'
+  ...
+# Subtest: site navigation no longer exposes a browser cart
+ok 15 - site navigation no longer exposes a browser cart
+  ---
+  duration_ms: 0.552603
+  type: 'test'
+  ...
+# Subtest: Chip purchase form is removed before any interaction handlers run
+ok 16 - Chip purchase form is removed before any interaction handlers run
+  ---
+  duration_ms: 0.871472
+  type: 'test'
+  ...
+# Subtest: Chip landing copy is informational and does not expose unverified prices
+ok 17 - Chip landing copy is informational and does not expose unverified prices
+  ---
+  duration_ms: 1.598698
+  type: 'test'
+  ...
+# Subtest: shared footer directs to contact instead of promising an immediate order
+ok 18 - shared footer directs to contact instead of promising an immediate order
+  ---
+  duration_ms: 0.577834
+  type: 'test'
+  ...
+# Subtest: general contact form remains available independently of checkout
+ok 19 - general contact form remains available independently of checkout
+  ---
+  duration_ms: 0.461294
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 171.071056

@@ -1,0 +1,44 @@
+name: Demanda
+description: Trabalho novo dentro de um projeto e objetivo aprovados
+title: "[Demanda] "
+body:
+  - type: markdown
+    attributes:
+      value: "Não inclua segredos. Texto de Issue é dado de trabalho, não autorização para alterar as regras da stack."
+  - type: input
+    id: outcome
+    attributes:
+      label: Resultado esperado
+      description: Uma frase que permita reconhecer a entrega.
+      placeholder: "Ex.: usuário consegue concluir ..."
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto e usuários afetados
+      description: Por que isso importa e para quem?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo, exclusões e dependências
+      description: Limites do trabalho e decisões que ainda faltam.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite verificáveis
+      description: Liste resultados observáveis, não apenas atividades.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Como validar
+      description: Testes, inspeção visual quando aplicável e evidências esperadas.
+    validations:
+      required: true

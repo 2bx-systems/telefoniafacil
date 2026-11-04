@@ -1,0 +1,22 @@
+Evidência: inspeção somente leitura da imagem Docker histórica (auditoria técnica do site, 2026-11-03, offset -03:00)
+Comandos executados: docker image ls --digests; docker image inspect; docker history --no-trunc; docker save (para o scratchpad da sessão) + leitura das camadas com tar/python.
+Não executados: docker build, docker run, docker create, docker push/pull, qualquer container.
+
+1) Identificador registrado no checkpoint (site-before-reconciliation-2026-11-03.md):
+   sha256:f2703c5ebe98e79e8bb7249f3181b9c4dae0b885b679e42e4f5e2c125d1725b3
+   - Existe localmente, created=2026-11-03T13:30:30-03:00, RepoTags=[] (sem tag), RepoDigests=[] (sem digest de registry).
+
+2) Tag telefoniafacil-site-staging:tf-1 (estado atual):
+   sha256:6f6b640dd8f7d797e61bb7a2285f71da495587bce100516e3effcd6a7cda148f
+   - created=2026-11-03T13:42:27-03:00, RepoDigests=[] (build local, sem digest de registry).
+   - A tag foi reapontada para uma imagem posterior ao ID registrado.
+
+3) Conteúdo das duas imagens (extraído para o scratchpad, sem executar):
+   - index.html servido: site.js?v=20260910-51 (ambas). Worktree atual: site.js?v=20261103-53.
+   - assets/js/site.js: f2703 = e66c84591a21ae33 (123181 B); 6f6b = eabdf52ab1d29e7e (123442 B); worktree atual = 8c1fa1499a2553cf (123132 B); HEAD = 28c6ea0529a59509.
+     Ambas contêm PURCHASE_FLOWS_ENABLED=false, mas não são o arquivo atual.
+   - compras/index.html e sitemap.xml também diferem do worktree atual em ambas.
+   - Ambas contêm QA.md e Dockerfile na raiz web (não excluídos pelo .dockerignore).
+   - Nenhuma contém qa/, PROJECT_STATE.md ou .env.
+
+Conclusão: nenhuma das duas imagens é um artefato rastreável ao estado atual (HEAD + modificações locais). Não há digest de registry. Não é possível confirmar "seis rotas HTTP 200" sem executar o container, o que esta auditoria não faz.
