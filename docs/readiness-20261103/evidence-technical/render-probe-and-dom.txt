@@ -1,0 +1,37 @@
+Evidência: renderização local em Chrome 156 headless (Linux), servidor estático somente em 127.0.0.1, sem submeter formulário nem clicar.
+Servidores: python3 -m http.server em 127.0.0.1:8765 (worktree) e cópia idêntica em scratchpad na porta 127.0.0.1:8766 (para sonda same-origin). Ambos encerrados ao fim.
+Cópia verificada: diff -rq worktree vs cópia (excluindo .git e shots) sem diferenças.
+
+A) DOM renderizado (google-chrome --headless=new --dump-dom, virtual-time-budget 4000 ms, 1440x900):
+   rota           forms  inputs  mailto  erros-console
+   /              0      0       2       0
+   /compras/      0      0       2       0
+   /contratar/    0      0       2       0
+   /carrinho/     0      0       2       0
+   /checkout/     0      0       2       0
+   /chip/         0      0       2       0
+   /contato/      1      5       3       0
+   /planos/       0      0       2       0
+   /numero-fixo/  0      0       2       0
+   Os mailto são do topbar/rodapé (contato@telefoniafacil.com.br). Não há mailto de pedido no DOM.
+   Erros no stderr: somente WARNING de sandbox/GPU/sqlite do Chrome; nenhum CONSOLE error ou uncaught da página.
+
+B) Sonda de layout (iframes same-origin, 390 px e 1440 px, 11 rotas cada):
+   overflowPx=0 em todas as 22 combinações; brokenHashAnchors=[] em todas; forms=0 e inputs=0 em todas, exceto /contato/ (1 form, 5 inputs);
+   payTerms (pagamento|pix|boleto|cartão de crédito|checkout) = false em todas as rotas.
+
+C) CTAs renderizados (texto -> href):
+   Início: "Começar contratação" -> ./compras/ ; "Contratar agora" (cards) -> compras handoff
+   /planos/: "Configurar este plano" (10x) -> ../compras/?produto=...&oferta=...; "Configurar locação" (12x) -> ../compras/?produto=Equipamentos+e+Locação...; "Configurar minha solução" (4x) -> ../compras/?produto=...
+   /numero-fixo/: "Contratar esta solução" -> ../compras/?produto=Número+Fixo ; "Configurar adicionais" -> ../compras/?produto=Número+Fixo
+   /compras/: header "Acessar Página de Compras" -> ./compras/ ; hero "Fale com nossa equipe" -> ./contato/
+   Destino real = rota interna de transição (informativa). Nenhum CTA aponta para formulário, pagamento ou mailto de pedido.
+
+D) Capturas (docs/readiness-20261103/evidence-technical/):
+   desktop-home-top.png, mobile-home-top.png, desktop-compras.png, mobile-compras.png, desktop-chip.png, mobile-chip.png, desktop-planos.png, mobile-planos.png
+   Observações visuais (inspeção das imagens, não aprovação de design):
+   - desktop-chip.png: setas do carrossel do hero sobrepõem a borda superior do botão "Ver opções de planos" (defeito de sobreposição, 1440 px).
+   - desktop-chip.png: no card de 20 GB, o texto "Ver informações de ..." do botão quebra e fica cortado.
+   - mobile-chip.png: sem sobreposição observada no hero.
+   - desktop-compras.png: rótulo "Acessar Página de Compras" no cabeçalho e "Fale com nossa equipe" como ação principal; página informa que a compra não está disponível.
+   Limite: capturas em headless Linux, sem aprovação visual humana; não substituem revisão em dispositivo.

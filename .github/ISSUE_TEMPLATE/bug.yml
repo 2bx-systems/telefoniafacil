@@ -1,0 +1,40 @@
+name: Bug
+description: Defeito reproduzível ou comportamento incorreto
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Não publique credenciais, dados pessoais ou logs brutos sensíveis."
+  - type: textarea
+    id: observed
+    attributes:
+      label: Comportamento observado
+      description: O que aconteceu? Inclua evidência redigida quando disponível.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Passos para reproduzir
+      description: Ambiente, versão e passos mínimos; registre se ainda não foi reproduzido.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto e contorno
+      description: Usuários afetados, gravidade observada e workaround, se houver.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Critérios de correção e teste
+    validations:
+      required: true

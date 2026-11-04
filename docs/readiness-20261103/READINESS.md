@@ -1,0 +1,58 @@
+# Readiness — Site Institucional Telefonia Fácil
+
+**Veredito geral:** auditoria local documentada; **staging bloqueado**. Não é aceite do produto, não prova disponibilidade pública nem implementação da Página de Compras.
+
+**Data da verificação:** 2026-11-03 (`America/Sao_Paulo`).  
+**Projeto:** `tf-site-institutional`; `company_id` formal desconhecido.  
+**Workspace:** `c50d714d-904e-42fb-aba2-18a5fdd3b897::/home/adriano/orca-ext4/projects/telefoniafacil-site-disable-purchase`.  
+**Branch/HEAD:** `feat/deactivate-site-purchase-flows` / `c824a21bfc18bd848b977e32f831833eab02cd40`.  
+**Run desta auditoria:** `run_adfd9344d49e`; Task raiz `task_9ddd4ddc08fe`; Dispatch `ctx_742943a681ac`. IDs de filhos e revisão em `PROJECT_STATE.md` e `evidence-coordinator/independent-checks.md`.
+**Vínculo desta auditoria:** Jira [TF-2](https://2bx.atlassian.net/browse/TF-2) (tenant `2bx.atlassian.net`, ID 11293) e GitHub [Issue #1](https://github.com/adriano2bx/telefoniafacil/issues/1), confirmados por Hermes; TF-1 é somente staging. Read-back de Hermes em 2026-11-03 (horário não informado): TF-2 **Em andamento**, assignee null; Issue #1 **OPEN**, assignee null. Reconciliação inicial: [ERRATA-20261103-02.md](ERRATA-20261103-02.md); correções após revalidação final: [ERRATA-20261103-03.md](ERRATA-20261103-03.md).
+
+## Matriz de evidências
+
+| Dimensão | Verdict | Evidência | Limite / conclusão |
+|---|---|---|---|
+| Diretório e Git local do site | **verificado** | Worktree `c50d714d...` no path exclusivo; branch e HEAD conferidos pelo Orca/Git | Dirty/untracked pré-existente permanece; sem commit/PR |
+| Separação de diretórios | **parcial** | Site, Portal e Compras têm paths/workspaces Orca distintos; Portal HEAD zero; Compras é pasta sem Git. O site ainda tem `compras/index.html` shell | Separação de diretório não prova extração funcional, API ou ownership |
+| Separação Orca | **verificado** para o site; **parcial** como arquitetura global | Task e Dispatch da auditoria estão no workspace/repo do site; metadados Orca mostram ids/caminhos separados para Portal/Compras | Não coordenei ou auditei runtime dos irmãos; somente metadados de workspace foram lidos |
+| Git/GitHub | **parcial** | Repo privado confirmado; branch local tem mudanças sem commit. **Observação com timestamp interno:** `evidence/2026-11-03/github-open.json` tem `updated_at=15:41:19 -03:00` e arquivo gravado às 15:41:29; as buscas de issues/PRs retornaram listas vazias, exit 0. **Outras observações preservadas:** `independent-checks.md` registra outra busca vazia sem timestamp próprio (cabeçalho 16:00); checkpoint histórico do `PROJECT_STATE.md` também anota nenhuma issue aberta no minuto 16:00, sem segundos. Esses snapshots não estabelecem se antecedem ou sucedem a emissão da Issue #1 no mesmo minuto; não são estado atual. O recibo `sync-20261103/github-create.json` contém o URL da Issue #1 e tem mtime 16:00:24.49, sem timestamp dentro do conteúdo. **Estado conforme read-back de Hermes:** Issue #1 **OPEN**, assignee null; read-back em 2026-11-03, horário não informado. | A busca de 15:41:19 não prova estado posterior; o mtime 15:41:29 é do arquivo, não da consulta. A criação da Issue #1 pode ser datada apenas pelo mtime do recibo. A busca de branch exata também é histórica e não foi repetida. Nenhum estado de PR foi revalidado depois das buscas históricas; alterações locais não estão publicadas |
+| Jira | **parcial** | Hermes confirmou TF-2 como issue desta auditoria. Read-back de Hermes (2026-11-03, horário não informado): TF-2 ID 11293, host de vínculo `2bx.atlassian.net`, **Em andamento**, assignee null. `TF-1` é exclusivamente staging, Em andamento com waiting-approval | A 404 anterior foi para TF-1 em `2bxsistemas.atlassian.net`, host diferente do vínculo TF-2; natureza/uso do primeiro host não foi verificada, e aquele 404 não se aplica ao TF-2. Esta rodada não releu o Jira. Escritas pontuais de Hermes têm recibos listados na linha seguinte; esta auditoria não fez writes |
+| Escritas pontuais de tracker por Hermes | **verificado por read-back reportado** | `TRACKING.md` e checkpoint superior de `PROJECT_STATE.md`: Jira TF-2 comment `10350` e GitHub comment `6613153032` confirmados por Hermes; Issue #1 foi criada no tracker e o read-back aponta `OPEN`, sem assignee. O recibo local de criação da Issue #1 (`/home/adriano/portfolio/telefonia-facil/sync-20261103/github-create.json`) tem mtime 16:00:24.49, sem horário interno | São ações remotas de Hermes, não desta auditoria/coordenador local; os recibos de comment/read-back não provam sincronização integral do backlog. Nenhuma escrita foi feita nesta auditoria |
+| Backlog e owner | **parcial** | Há vínculo oficial TF-2/GitHub #1 para esta auditoria e backlog local de readiness | Owners de negócio/técnico/staging desconhecidos; implementação/Compras sem owner confirmado |
+| Compra legada do site | **verificado** como desativada no código/render atual | `PURCHASE_FLOWS_ENABLED=false`; testes focais 19/19; render de Chip e rotas de transição sem checkout/pagamento. 28 HTML (27 tracked + `compras/index.html` untracked) usam cache `20261103-53` | A flag é a única barreira: código de simulação de pagamento e `mailto:` do pedido Chip permanecem no fonte; não reativar sem revisão/remoção autorizada. O pedido autenticado do Portal não foi extraído |
+| Marketing, CTA e contato | **parcial** | CTAs apontam para `/compras/` informativa ou contato; formulário geral permanece | Há rótulos transacionais (`Contratar agora`, `Começar contratação`, `Configurar...`) que chegam a página em preparação; copy aguarda decisão humana |
+| Frontend renderizado | **parcial** | Headless local em desktop/mobile; capturas e DOM em `evidence-technical/`; coordenador inspecionou Chip e Compras | Sobreposição no hero Chip em desktop; sem avaliação humana/device real; nenhuma submissão |
+| Testes e sintaxe | **verificado** | Coordenador repetiu `node --check`, `node --test ...` (19/19) e `git diff --check`, todos exit 0 | 18/19 casos são checks textuais; apenas um executa sanitizador. Não é E2E |
+| Cache e sitemap | **verificado** | 28 HTML apontam `site.js?v=20261103-53`; `/contratar/` não consta no sitemap | Cache de CDN/browser remoto não verificado; metadado `noindex` estático das rotas legadas segue pendente |
+| Docker histórico | **bloqueado** para staging | Tag local `telefoniafacil-site-staging:tf-1` foi observada apontando para imagem `sha256:6f6b640...` sem RepoDigest; o campo `Created` da imagem marca 13:42:27 −03:00, mas o momento de criação/reapontamento da tag não foi registrado. Conteúdo extraído pelo worker serve cache `-51` e difere do worktree. ID `f2703...` foi **observado pelo worker às 13:30** (`created=13:30:30 −03:00`, sem tag, sem digest); **não foi reconfirmado** e está ausente na inspeção posterior do coordenador. Não há evidência atual de existência | Estado atual de `f2703…` é **inconclusivo** e não sustenta nenhuma decisão. Nenhuma imagem vinculada ao source atual; teste de rotas HTTP do container não foi repetido; nada foi construído/rodado nesta auditoria |
+| Runtime/deploy | **parcial** | `Dockerfile`/nginx existem; QA Docker anterior é histórico; README descreve EasyPanel e checkpoint descreve VPS via túnel | Caminhos de deploy conflitam; não houve staging nem inspeção remota; dono e rollback exatos desconhecidos |
+| Dados e autorização | **parcial** | Site estático anônimo; sem sessão nem backend de pedido; formulário de contato monta `mailto:` no cliente com dados digitados | Privacidade/consentimento e retenção não decididos; nenhum dado foi enviado. `.dockerignore` não exclui `docs/`, `shots/`, `QA.md`, `Dockerfile` ou `nginx.conf`; pagamento simulado e `mailto:` de pedido continuam em código morto sob a flag |
+| Contratos de integração | **bloqueado** para integração | Query de `/compras/` leva `produto`, `oferta` e atribuição filtrada | Não há schema versionado, endpoint, domínio, identidade, handoff, SLA ou API live confirmados |
+| Página de Compras | **ausente** como sistema transacional | `/compras/` é página de transição; workspace separado é pasta sem HEAD/branch | Documentos/PRD são discovery, não produto em execução |
+
+## Blockers prioritários
+
+1. **P1 — Imagem/source:** a tag histórica é stale e sem digest; o ID registrado não existe na inspeção posterior. Não usar para staging.
+2. **P1 — Empacotamento:** `Dockerfile` faz `COPY .`; `.dockerignore` não exclui `docs/`, `shots/`, `QA.md`, `Dockerfile` nem `nginx.conf`. O pacote criado nesta auditoria também entraria no webroot de um rebuild. Configuração não foi alterada; endurecimento deve preceder qualquer build.
+3. **P1 — Copy/CTA:** rótulos ainda prometem contratação/configuração, mas o destino informa que compras online não está disponível; a proposta central não foi aprovada nem aplicada.
+4. **P1 — Owners:** owners de negócio, técnico e staging não confirmados. Jira TF-2 (ID 11293) já tem read-back de Hermes: Em andamento, sem assignee, sem owner humano nomeado.
+5. **P2 — Visual:** hero Chip sobrepõe setas à CTA em desktop e há corte de label em card; correção é tarefa futura.
+6. **P2 — Deploy/rollback:** EasyPanel × VPS privada, alvo e procedimento de rollback não escolhidos nem autorizados.
+7. **P2 — Privacidade:** formulário de contato usa `mailto:` com dados pessoais, sem decisão documentada de finalidade/consentimento/retention.
+8. **P3 — Contrato futuro:** params de produto/oferta/campanha não têm contrato com Compras; não incluem autorização.
+9. **P2 — Código legado inativo:** a flag `PURCHASE_FLOWS_ENABLED=false` (`assets/js/site.js:4`) é a única barreira dos blocos de simulação de pagamento (`:195`), do `mailto:` de pedido Chip (`:193`) e do `mailto:` de pedido de contratação (`:253`), que seguem no fonte. Não executam com a flag `false`. O teste existente (`qa/purchase-flow-deactivation.test.mjs:58`) já falha se a constante deixar de ser `false`, mas não valida registro de aprovação formal. Antes de qualquer reativação: aprovação formal registrada, remoção ou revisão de segurança dos blocos, revisão autorizada da asserção existente como parte da mudança e reexecução da suíte/smoke. Ver A5 em [ERRATA-20261103-03.md](ERRATA-20261103-03.md).
+
+## Próximo passo permitido
+
+Decisão humana sobre copy/owners e caminho de deploy; em paralelo, owner técnico decide a correção de empacotamento. Só depois de source identificável, imagem nova, smoke local, rollback e autorização específica pode-se propor staging. Esta auditoria não iniciou o backlog de implementação.
+
+## Fontes
+
+- `worker-technical.md` e imagens/textos em `evidence-technical/` (preservados; referências a TF-1 como Jira e à contagem de 31 arquivos são corrigidas na errata).
+- `worker-review.md` (preservado) e `ERRATA-20261103-02.md` (reconciliação A1–A8 e D6–D7).
+- `evidence-coordinator/independent-checks.md`.
+- `/home/adriano/portfolio/telefonia-facil/evidence/2026-11-03/github-open.json` (`updated_at` 15:41:19 −03:00; mtime 15:41:29), `sync-20261103/github-create.json` (mtime 16:00:24.49, sem horário interno), `TRACKING.md` e `PROJECT_STATE.md` (read-backs de Hermes e comentários 10350/6613153032).
+- [ERRATA-20261103-03.md](ERRATA-20261103-03.md) reconcilia ressalvas da revalidação independente final; [worker-review-errata-20261103-02.md](worker-review-errata-20261103-02.md) permanece preservado como registro de revisão.
+- `PROJECT_STATE.md`, `QA.md`, `Dockerfile`, `nginx.conf`, `.dockerignore`, `assets/js/site.js`, `compras/index.html`, HTML e `sitemap.xml`.
+- `/home/adriano/portfolio/telefonia-facil/readiness-20261103/site-contract.md`, `COPY_DECISIONS.md`, `evidence/2026-11-03/` e `compras/PRD.md` (somente leitura).

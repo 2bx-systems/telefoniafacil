@@ -1,6 +1,8 @@
 .git
 .gitignore
 .DS_Store
+.env*
+PROJECT_STATE.md
 qa/
 AUDITORIA-PLANOS-OFICIAIS.md
 README.md
