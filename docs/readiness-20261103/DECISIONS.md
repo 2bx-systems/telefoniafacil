@@ -10,6 +10,14 @@
 | D-04 | Esta tarefa é auditoria e preparação; não executar staging ou operações remotas | Direção explícita | Nenhum staging, SSH ou deploy executado |
 | D-05 | Vínculo desta auditoria é Jira TF-2 + GitHub Issue #1; TF-1 é só staging | Confirmação de Hermes e metadata Orca; read-back de Hermes (2026-11-03, horário não informado): TF-2 ID 11293 Em andamento, assignee null; Issue #1 OPEN, assignee null | Alterações locais sem commit; imagem tag sem digest e conteúdo stale; owners humanos continuam pendentes |
 
+## Decisão posterior — navegação do site (2026-11-05)
+
+| ID | Registro | Classe | Evidência/limite |
+|---|---|---|---|
+| D-06 | Remover da navegação os links de “Conteúdos” e o link textual “Página de Compras”; manter somente o botão principal “Acessar Página de Compras” e seu destino informativo atual. As rotas permanecem acessíveis por URL direta para não quebrar links antigos. | Direção explícita do usuário nesta conversa | Autorização somente para links de navegação do site nesta branch. Não autoriza habilitar compras, alterar o destino do CTA, copy comercial, pagamentos ou deploy. |
+| D-07 | Remover o dropdown “Soluções” e seus links de páginas de produto. Manter o botão “Ver soluções” apontando para `/solucoes/`; no menu mobile, manter uma única entrada para `/solucoes/`. As páginas individuais continuam acessíveis por URL e pelos links próprios que restarem. | Direção explícita do usuário nesta conversa | Autorização somente para simplificar a navegação nesta branch. Não apaga rotas, não altera produtos nem compra desativada, e não autoriza deploy. |
+| D-08 | Remover da home somente a seção “05 — Planos e Ofertas” e o bloco final “Fale com nosso time” mostrado nas capturas. Manter a página `/planos/` e a página `/contato/` inalteradas. | Direção explícita do usuário após ver as capturas | Autorização limitada a esses dois trechos da home; não altera preços/copy em outras páginas, destinos de CTA ou publicação. |
+
 ## Propostas pendentes — não são decisões
 
 - Copy recomendada em `/home/adriano/portfolio/telefonia-facil/COPY_DECISIONS.md`: CTA “Informações de contratação”, transição consultiva, ação “Falar com a equipe”, rodapé inclusivo e rótulo “Plano móvel”. Não aplicada.

@@ -129,3 +129,84 @@ Continuidade local atualizada; PRD persistido fora do cache. Documentação aind
 - **Follow-up acidental, sem trabalho:** `task_ae9b4b257adc` / Dispatch `ctx_20590a9d44c0` foi criado automaticamente quando uma mensagem de fechamento chegou após completar o executor; não tinha conteúdo. O worker confirmou que não alterou arquivos; o Dispatch foi parado por ID exato (`process_stopped`, liveness exited) e Task marcada failed/cancelled; sem retry. O terminal fica retido, sem liberação solicitada.
 - **Nota de escopo:** um preflight global `orchestration run-list --json` exibiu títulos/IDs de Runs fora do portfólio Telefonia Fácil; não houve inspeção de conteúdo, arquivos ou sistemas desses projetos nem ação sobre eles. Não repetir consultas globais; restante do trabalho permaneceu no workspace SITE.
 - **Gates e estado:** esta correção não aceita a auditoria nem fecha Tasks. Staging continua bloqueado e gates de owners, copy, empacotamento, caminho/rollback seguem abertos. Próximo passo: Hermes revisar os documentos corrigidos, decidir aceite da auditoria e atualizar trackers quando autorizado; sem implementar produto.
+
+## Checkpoint — auditoria e refinamento visual local (2026-11-05)
+
+- **Branch/base:** `feat/homepage-content-v2-draft`, HEAD `5c8cc8b` antes dos novos commits (nenhum foi criado nesta etapa). O checkout já continha alterações locais anteriores; preservar integralmente. As alterações atuais seguem locais, sem commit/push/merge.
+- **Auditorias concluídas:** Run Orca `run_fc6878229dff`; 3 workers Claude Opus revisaram 28 rotas, todas as seções e desktop/mobile. Relatórios e evidências/limitações: `docs/visual-audit-20261105/{README,home,products,institutional}.md`. Os relatórios registram achados, não aceite de produto.
+- **Planos concluídos:** Run `run_d84b7dbac24b`; 4 workers Antigravity analisaram os relatórios e capturas e elaboraram `docs/improvement-plans-20261105/{home,products,institutional,system}.md`. Gates de copy, comercial, jurídico, produto, assets e publicação foram preservados.
+- **Correções locais relatadas e aplicadas pelos workers Antigravity no mesmo Run:** shell/acessibilidade (`task_6643c1d2497a`), layout de produtos (`task_eea9096dc1e8`), decisão D-06 de navegação (`task_3a45d001eb61`), home (`task_fefe96490bbc`), layout institucional (`task_fb6cccfa5b83`) e decisão D-07 de navegação (`task_03a87ceea58f`). Foram atualizados `assets/css/site.css`, `assets/css/home-promo.css`, `assets/js/site.js`, tokens de cache nas 28 páginas HTML e a asserção de cache já existente em `qa/purchase-flow-deactivation.test.mjs`.
+- **Decisões D-06/D-07:** removidos da navegação os links de “Conteúdos” e a entrada textual duplicada “Página de Compras”, mantendo o botão principal de Compras e o destino informativo; removido o dropdown com links de produtos, mantendo “Ver soluções” para `/solucoes/` e uma única entrada mobile. As rotas e arquivos individuais continuam existentes. Registro em `docs/readiness-20261103/DECISIONS.md`.
+- **Verificação realizada pelo coordenador:** `git diff --check` passou; confirmou por busca que as 28 páginas usam `site.css?v=20261105-05` e `site.js?v=20261105-14`, e a home usa `home-promo.css?v=20261105-18`. Código da navegação foi inspecionado estaticamente: dropdown/sublista ausentes; botões “Ver soluções” e “Acessar Página de Compras” mantêm os destinos previstos. **Não houve teste automatizado, build ou revisão visual pós-correção**; resultados de implementação foram relatados pelos workers.
+- **Não executado:** testes, build, commit, push, PR, merge, staging, produção, DNS, TLS, infraestrutura ou deploy. Nenhuma copy, preço, afirmação comercial, texto legal, integração de formulário, pagamento, marca de cliente ou autorização de asset foi alterada.
+- **Gates ainda abertos:** validade e redação de preços/condições; textos legais; endpoint e estado real do formulário; autorização de logos/fotos e assets; conteúdo de cases e demais decisões de CTA/rotas. Não publicar até owners e gates próprios resolverem os pontos de auditoria.
+- **Próxima ação:** abrir o preview local para revisão humana das alterações; depois decidir quais itens bloqueados serão encaminhados aos owners. Staging e produção permanecem intocados e sem autorização.
+
+## Decisão D-08 — remoção de duas seções da home (2026-11-05)
+
+- **Autorizado e aplicado localmente:** removidas do template da home (`assets/js/site.js`) a seção `05 — Planos e Ofertas` e o bloco final `Fale com nosso time`, conforme as duas capturas enviadas. A página `/planos/`, `/contato/` e as demais páginas não foram removidas.
+- **Cache:** `site.js?v=20261105-15` atualizado nas 28 páginas HTML e na asserção de versão já existente em `qa/purchase-flow-deactivation.test.mjs`.
+- **Verificação:** `git diff --check` passou. Testes, build e revisão visual pós-remoção não foram executados. Nenhum commit, push, staging ou deploy foi feito; branch e gates existentes permanecem.
+
+## Refino visual da seção 03 — Linha Virtual (2026-11-05)
+
+- **Alteração:** em `assets/css/home-promo.css`, o título da seção agora apresenta “Números Virtuais.” como primeiro bloco e “Contrate. Ative. Use.” em fluxo contínuo, com escala mais contida. Copy, lista, nota comercial, CTA e destinos não foram alterados.
+- **Verificação local:** preview recarregado com `home-promo.css?v=20261105-19`. Inspeção de geometria no Chromium Orca: desktop em 1610 CSS px e mobile em 390 px; o título ocupa duas linhas/blocos em ambos e `scrollWidth` mobile permanece 390. `git diff --check` passou. Nenhum teste automatizado ou build executado.
+
+## Imagem na seção 03 — Linha Virtual (2026-11-05)
+
+- **Alteração:** incorporado o SVG existente `assets/images/home/virtual-number-routing.svg` abaixo do título, com texto alternativo, dimensões intrínsecas e carregamento adiado. O diagrama representa número virtual conectado a dispositivos/PABX. Copy e destino do CTA não mudaram.
+- **Cache:** `home-promo.css?v=20261105-20` na home; `site.js?v=20261105-16` nas 28 páginas HTML e na asserção estática de cache.
+- **Verificação local:** preview Orca em 1440 px; imagem carregou e ocupou 546 × 187 px na coluna desktop. Em viewport mobile de 390 px, ocupou 364 × 125 px e `scrollWidth` permaneceu 390. `git diff --check` passou. Testes automatizados e build não foram executados. Sem commit, push ou deploy.
+
+## Substituição por fotografia na seção 03 (2026-11-05)
+
+- **Alteração:** imagem vetorial substituída por fotografia original gerada pelo Codex ImageGen e convertida para WebP em `assets/images/home/virtual-number-photo.webp` (102 KB). Alt text descreve a cena sem alegar pessoa identificável. O SVG anterior permanece no repositório, sem referência nesta seção. Texto, CTA e destino continuam iguais.
+- **Cache:** `site.js?v=20261105-17` aplicado às 28 páginas HTML e à asserção estática existente em `qa/purchase-flow-deactivation.test.mjs`.
+- **Verificação:** imagem carregada no preview Orca. Desktop: 546 × 273 px. Mobile de 390 px: 364 × 182 px, sem overflow horizontal (`scrollWidth` 390). `git diff --check` passou. Não rodei testes ou build; sem commit, push ou deploy.
+
+## Revisão visual pós-fotografia — seção 03 (2026-11-05)
+
+- **Auditoria concluída:** Run `run_71effe41210e`, Task `task_16689ff99b10`, Dispatch `ctx_66222ad1bd35`. Relatório original e capturas preservados em `docs/visual-audit-20261105/section-03-photo-review/`.
+- **Achados confirmados:** UI de chamada inventada e repetida nos dois dispositivos torna a foto reconhecivelmente sintética; alt text atual tem redação confusa. Escuridão/borda sem tratamento é observação visual, mas a severidade é subjetiva.
+- **Limitação importante:** screenshots headless do worker não dispararam a imagem `loading="lazy"`; por isso alegações de desequilíbrio desktop e imagem pequena no mobile não são conclusivas. Conferi a seção carregada no preview Orca: 546 × 273 px em desktop, 364 × 182 px em mobile de 390 px, sem overflow. A composição desktop carregada não confirma desequilíbrio severo. Análise e capturas de comparação estão em `COORDINATOR-REVIEW.md`.
+- **Estado:** apenas auditoria/documentação; nenhuma correção de produto foi aplicada. Testes/build não executados, sem commit, deploy ou fechamento de gates.
+
+## Correções pós-auditoria visual — seção 03 (2026-11-05)
+
+- **Autorização do usuário:** aplicar as correções apontadas pela revisão visual.
+- **Imagem:** foto sintética substituída localmente pela fotografia de Kaboompics via Pexels, com página de origem e licença registradas em `assets/images/home/ASSETS.md`. A versão ativa está em `assets/images/home/virtual-number-photo-pexels-5237652.webp` (71 KB, WebP, recorte 1400 × 933). A foto gerada anterior foi preservada sem referência ativa.
+- **Ajustes:** alt text direto e descritivo; moldura com borda sutil e raio de 8 px; enquadramento desktop mantido em 2:1 e mobile ajustado para 3:2. Texto comercial, CTA e grid das colunas não mudaram. Não escondi imagem no mobile.
+- **Cache:** `site.js?v=20261105-18` nas 28 páginas HTML e na asserção estática; home com `home-promo.css?v=20261105-21`.
+- **Verificação no preview:** imagem carregada e dimensões corretas; desktop 547 × 273 px e mobile 364 × 243 px em viewport 390, sem overflow horizontal (`scrollWidth` 390). Capturas atuais de Orca retornaram quadro branco, portanto a validação final usou inspeção do arquivo de imagem e geometria/estado do DOM; o navegador ficou na seção em desktop.
+- **Não executado:** testes, build, commit, push, PR, merge, staging, produção ou deploy. Os gates gerais de publicação e owner permanecem abertos.
+
+
+## Auditoria visual completa das rotas — 2026-11-12
+
+- Revisadas localmente as 28 rotas HTML do site em 1440 px e 390 px; 56 screenshots e inventário técnico registrados em `docs/visual-audit-20261112/`. Relatório e índice por rota em `docs/visual-audit-20261112/README.md`.
+- **Verificado:** zero imagens quebradas ou pendentes, zero overflow horizontal a 390 px e zero imagens sem alt nas capturas. Blocos sem foto foram separados de falha técnica; o destaque de PABX em Conteúdos usa painel escuro/ícone.
+- **Achados a priorizar:** cartões dos planos Chip variam até 74 px no mobile; grid de Soluções mistura formatos intencionais, mas precisa de regra clara de composição/alinhamento; cartões de equipamentos têm variação menor de 21–27 px.
+- **Estado:** documentação/evidência apenas; nenhum código, conteúdo, teste ou configuração alterado por esta auditoria. Sem commit, PR, build, staging, publicação ou deploy. Próxima ação proposta: tratar os achados P1/P2 e repetir capturas.
+
+## Refinamento visual dos cards de Soluções — 2026-11-12
+
+- **Autorização:** pedido do usuário para corrigir o problema mostrado no recorte de `/solucoes/`.
+- **Alteração local:** `assets/css/site.css` agora usa uma composição vertical comum nos oito cards; grid responsivo em quatro colunas desktop, duas tablet e uma mobile; mesma altura de mídia e posição de badge, conteúdo e CTA. A versão de CSS da rota foi atualizada em `solucoes/index.html` para invalidar cache.
+- **Verificado no preview local:** 1440 px: todos os cards com 356 px de altura e mídia de 164 px; 390 px: todos com 388 px e mídia de 190 px. CTAs alinhados à base com recuo comum de 19 px; imagens carregadas. Capturas posteriores em `docs/visual-audit-20261112/after/solutions-{desktop,mobile}.jpg` e relatório atualizado em `docs/visual-audit-20261112/README.md`.
+- **Escopo/estado:** alteração CSS restrita a `/solucoes/` mais cache-bust do HTML; sem testes, build, commit, PR, merge, staging, produção ou deploy. Auditoria original das 28 rotas preservada como baseline anterior à correção; demais achados não foram alterados.
+
+## Remoção de seções de clientes — 2026-11-12
+
+- **Autorização:** pedido do usuário para remover os clientes das páginas Sobre e Soluções.
+- **Alteração local:** removida a seção de logos da rota `/solucoes/` e a seção de clientes injetada em `/sobre/`; removidos os estilos órfãos dessa galeria. A seção compartilhada de confiança/logos na Home foi preservada. Cache-bust de CSS e JS atualizado nas duas rotas.
+- **Verificado no preview local:** `/sobre/` e `/solucoes/` sem blocos de clientes/logos no conteúdo principal em desktop e mobile; overflow horizontal ausente. Quatro capturas em `docs/visual-audit-20261112/after/*-no-clients.jpg`; relatório atualizado na mesma pasta.
+- **Estado:** somente as duas rotas solicitadas e estilos sem uso; sem testes, build, commit, PR, merge, staging, produção ou deploy.
+
+## Preflight local para EasyPanel — 2026-11-18
+
+- **Pedido:** deixar a versão local preparada para envio pelo usuário ao EasyPanel. Nenhum acesso/publicação na plataforma foi realizado.
+- **Configuração local:** `Dockerfile` usa imagem oficial Nginx `1.30.6-alpine3.24`; `.dockerignore` exclui `docs/`, `qa/`, `.github/`, screenshots e arquivos de governança; `nginx.conf` repete cabeçalhos de segurança nas locations de HTML e assets, pois locations com `add_header` não herdam os cabeçalhos do `server` no padrão Nginx documentado.
+- **Verificado:** build local `telefoniafacil-site:deploy-candidate` concluído; `nginx -t` aprovado; requests a `/`, `/sobre/`, `/solucoes/` e ao CSS retornaram HTTP 200; responses de HTML/assets têm cache adequado e cabeçalhos de segurança; README e docs foram excluídos (404 dentro da imagem). Build context 34.48 MB. O container local de preflight foi encerrado.
+- **Uso no EasyPanel:** diretório raiz do repositório, build por `Dockerfile`, porta interna `80`, sem env vars ou comandos extras. Ainda é necessário disponibilizar esta versão por envio manual ou push/PR e configurar serviço/domínio/TLS no painel; não foi feito aqui.
+- **Limites de produto:** `PURCHASE_FLOWS_ENABLED=false` continua; `/compras/` não foi presumido como outra aplicação. Formulários permanecem demonstrativos/`mailto`. Nenhum teste automatizado, staging, produção, commit, push ou deploy foi executado.

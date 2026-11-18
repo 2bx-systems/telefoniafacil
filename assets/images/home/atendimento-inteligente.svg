@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 420" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Atendimento inteligente em camadas</title>
+  <desc id="desc">Chamadas distribuídas entre solicitações simples atendidas por agentes de IA e situações encaminhadas à equipe.</desc>
+  <rect x="1" y="1" width="1118" height="418" rx="18" fill="#F4F8F8" stroke="#DCE7E9"/>
+  <path d="M36 350H1084" stroke="#D5E1E4"/>
+  <text x="54" y="58" fill="#0A7A4C" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2">ATENDIMENTO EM CAMADAS</text>
+  <text x="54" y="87" fill="#526875" font-family="Inter,Arial,sans-serif" font-size="16">Mais capacidade com a equipe que você já tem</text>
+  <g stroke="#9FB4BE" stroke-width="2" stroke-linecap="round">
+    <path d="M222 203H381M381 203V148H559M381 203V258H559"/>
+    <path d="M750 148H904M750 258H904"/>
+  </g>
+  <g fill="#0A7A4C">
+    <circle cx="381" cy="203" r="6"/><circle cx="559" cy="148" r="6"/><circle cx="559" cy="258" r="6"/>
+    <circle cx="904" cy="148" r="6"/><circle cx="904" cy="258" r="6"/>
+  </g>
+  <g fill="#fff" stroke="#C7D7DC" stroke-width="1.5">
+    <rect x="54" y="151" width="168" height="104" rx="13"/>
+    <rect x="559" y="107" width="191" height="82" rx="13"/>
+    <rect x="559" y="217" width="191" height="82" rx="13"/>
+    <rect x="904" y="107" width="164" height="82" rx="13"/>
+    <rect x="904" y="217" width="164" height="82" rx="13"/>
+  </g>
+  <g stroke="#052B43" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M87 193c0-13 10-23 23-23s23 10 23 23v21c0 13-10 23-23 23s-23-10-23-23z"/>
+    <path d="M78 204v-6c0-18 14-32 32-32s32 14 32 32v6M143 200h8v18h-8M77 200h-8v18h8M118 238c0 8 6 14 14 14h9"/>
+    <path d="M592 144h18l8-12 11 28 11-20 8 4h73"/>
+    <path d="M592 253h18m-18 11h34m-34 11h25"/>
+    <path d="M935 146c11-15 26-15 37 0M930 153c14-21 34-21 48 0M945 162c5-7 13-7 18 0"/>
+    <circle cx="954" cy="171" r="2" fill="#0A7A4C" stroke="none"/>
+    <path d="M944 242c0-9 7-16 16-16s16 7 16 16v19c0 9-7 16-16 16s-16-7-16-16zM937 243v-4c0-13 10-23 23-23s23 10 23 23v5M937 243h-6v13h9m43-13h6v13h-9m-16 23h7"/>
+  </g>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="164" y="190" fill="#052B43" font-size="15" font-weight="700">Chamadas</text>
+    <text x="164" y="213" fill="#6A7D87" font-size="12">Distribuição inteligente</text>
+    <text x="592" y="130" fill="#052B43" font-size="13" font-weight="700">Agentes de IA</text>
+    <text x="592" y="177" fill="#6A7D87" font-size="12">Solicitações simples</text>
+    <text x="592" y="242" fill="#052B43" font-size="13" font-weight="700">Call Center</text>
+    <text x="592" y="287" fill="#6A7D87" font-size="12">A equipe se concentra</text>
+    <text x="943" y="185" fill="#052B43" font-size="12" font-weight="700">Agilidade</text>
+    <text x="937" y="295" fill="#052B43" font-size="12" font-weight="700">Equipe</text>
+  </g>
+  <g stroke="#0A7A4C" stroke-width="2" stroke-linecap="round">
+    <path d="M45 377h42"/><path d="M103 377h18" stroke="#A9BBC2"/><path d="M137 377h18" stroke="#A9BBC2"/>
+  </g>
+  <text x="172" y="382" fill="#667A84" font-family="Inter,Arial,sans-serif" font-size="12">PABX em Nuvem  ·  Call Center  ·  Agentes de IA</text>
+</svg>

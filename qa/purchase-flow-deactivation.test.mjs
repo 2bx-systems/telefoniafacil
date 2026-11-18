@@ -94,7 +94,7 @@ test('all HTML entrypoints request the cache-busted site script', () => {
   });
   const scriptEntrypoints = collectHtml(repoRoot).filter(path => readFileSync(path, 'utf8').includes('assets/js/site.js'));
   assert.ok(scriptEntrypoints.length > 0, 'HTML entrypoints reference the shared script');
-  const staleEntrypoints = scriptEntrypoints.filter(path => !/assets\/js\/site\.js\?v=20261103-53/.test(readFileSync(path, 'utf8')));
+  const staleEntrypoints = scriptEntrypoints.filter(path => !/assets\/js\/site\.js\?v=20261105-18/.test(readFileSync(path, 'utf8')));
   assert.deepEqual(staleEntrypoints, []);
 });
 

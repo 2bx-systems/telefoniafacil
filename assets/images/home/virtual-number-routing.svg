@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" fill="none">
+  <g stroke="#a9bec8" stroke-width="2.5" stroke-linecap="round">
+    <path d="M380 130H194M380 130h186M380 130v78"/>
+  </g>
+  <g fill="#f4f8fa" stroke="#c7d7de" stroke-width="2">
+    <rect x="42" y="79" width="152" height="102" rx="18"/>
+    <rect x="566" y="79" width="152" height="102" rx="18"/>
+    <rect x="304" y="196" width="152" height="56" rx="16"/>
+  </g>
+  <rect x="286" y="70" width="188" height="120" rx="22" fill="#052b43"/>
+  <path d="M380 190v18" stroke="#a9bec8" stroke-width="2.5" stroke-linecap="round"/>
+  <g stroke="#22d98d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M354 111c4-5 9-5 13-1l8 9c3 3 3 8 0 11l-5 5c6 10 14 18 24 24l5-5c3-3 8-3 11 0l9 8c4 4 4 9-1 13l-5 5"/>
+    <path d="M338 153c-6-8-10-17-11-27"/>
+  </g>
+  <g stroke="#052b43" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="98" y="96" width="40" height="65" rx="8"/>
+    <path d="M111 105h14M115 151h6"/>
+    <rect x="610" y="101" width="64" height="45" rx="5"/>
+    <path d="M602 154h80l-8 9h-64z"/>
+    <path d="M339 219h82M346 228h68"/>
+  </g>
+  <g fill="#0a7a4c">
+    <circle cx="194" cy="130" r="5"/>
+    <circle cx="566" cy="130" r="5"/>
+    <circle cx="380" cy="208" r="5"/>
+  </g>
+</svg>

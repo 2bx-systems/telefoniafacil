@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Voz corporativa em diferentes canais</title>
+  <desc id="desc">Cinco canais de voz corporativa apresentados em uma composição editorial conectada: números fixos, 0800, SIP Trunk, voz móvel e WhatsApp Call.</desc>
+  <rect x="1" y="1" width="1118" height="358" rx="18" fill="#07374F" stroke="#376176"/>
+  <path d="M42 279H1078" stroke="#557487" stroke-width="1"/>
+  <text x="54" y="52" fill="#42E69B" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">UM REPERTÓRIO DE VOZ</text>
+  <text x="54" y="79" fill="#D2E2E8" font-family="Inter,Arial,sans-serif" font-size="15">Canais que podem ser combinados conforme as necessidades do negócio</text>
+  <g stroke="#7F9AA6" stroke-width="1.5">
+    <path d="M54 111V258M258 111V258M462 111V258M666 111V258M870 111V258M1074 111V258"/>
+  </g>
+  <g fill="#0A7A4C">
+    <circle cx="156" cy="153" r="4"/><circle cx="360" cy="208" r="4"/><circle cx="564" cy="153" r="4"/><circle cx="768" cy="208" r="4"/><circle cx="972" cy="153" r="4"/>
+  </g>
+  <g stroke="#42E69B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 153h17l6-12 9 25 10-20 8 7h52"/>
+    <path d="M258 208h26l7-14 10 29 10-19 9 4h42"/>
+    <path d="M462 153h20l8-8 8 16 9-27 10 35 9-16h38"/>
+    <path d="M666 208h22l8-20 10 35 10-23 8 8h44"/>
+    <path d="M870 153h18l8-12 9 25 10-20 8 7h49"/>
+  </g>
+  <g stroke="#D8E5E8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M124 176v25c0 8 6 14 14 14h20M328 176v25c0 8 6 14 14 14h20M532 176v25c0 8 6 14 14 14h20M736 176v25c0 8 6 14 14 14h20M940 176v25c0 8 6 14 14 14h20"/>
+  </g>
+  <g fill="#fff" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="650">
+    <text x="54" y="247">Números fixos</text>
+    <text x="258" y="247">0800</text>
+    <text x="462" y="247">SIP Trunk</text>
+    <text x="666" y="247">Voz móvel</text>
+    <text x="870" y="247">WhatsApp Call</text>
+  </g>
+  <g fill="#42E69B">
+    <rect x="54" y="305" width="6" height="22" rx="3"/><rect x="66" y="299" width="6" height="34" rx="3"/><rect x="78" y="309" width="6" height="14" rx="3"/><rect x="90" y="294" width="6" height="44" rx="3"/><rect x="102" y="303" width="6" height="26" rx="3"/><rect x="114" y="299" width="6" height="34" rx="3"/><rect x="126" y="307" width="6" height="18" rx="3"/>
+  </g>
+  <path d="M148 316H1066" stroke="#597787" stroke-width="1.5"/>
+  <text x="148" y="321" fill="#C6D9E0" font-family="Inter,Arial,sans-serif" font-size="12">Fazer e receber chamadas no Brasil</text>
+</svg>
