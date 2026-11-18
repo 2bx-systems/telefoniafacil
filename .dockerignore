@@ -1,6 +1,15 @@
 .git
+.github
+.dockerignore
 .gitignore
 .DS_Store
+.env*
+AGENTS.md
+PROJECT_STATE.md
+TRACKING.md
+QA.md
 qa/
+docs/
+shots/
 AUDITORIA-PLANOS-OFICIAIS.md
 README.md
